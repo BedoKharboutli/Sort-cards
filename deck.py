@@ -47,7 +47,6 @@ class Card:
 class Deck:
     def __init__(self):
         """ Create a deck of 52 cards """
-
         self.cards = []
 
         for suite in ['Hearts', 'Diamonds', 'Spades', 'Clubs']:
@@ -72,6 +71,25 @@ class Deck:
 
         ###################
         # Your code here! #
+        leng = len(card_list)
+        if leng == 0:
+            card_list.append(card)
+        else:
+            run = True
+            while run:
+                for index in range(0, leng):
+                    if card.__lt__(card_list[index]) or card.__eq__(card_list[index]):
+                        card_list.insert(index, card)
+                        run = False
+                        break
+                    else:
+                        if index == leng -1:
+                            card_list.append(card)
+                            run = False
+                            break
+                        else:
+                            continue
+
         ###################
 
         return card_list
@@ -103,3 +121,5 @@ if __name__ == '__main__':
     print('Shuffled deck:', deck)
     deck.sort()
     print('Sorted deck:', deck)
+
+
