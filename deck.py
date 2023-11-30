@@ -8,6 +8,7 @@ class Card:
 
     def __str__(self):
         """ Make a string from the card's rank and suite. E.g. 5 of Clubs will be '5C'"""
+
         r = self.rank
         str_r = None
 
@@ -78,12 +79,12 @@ class Deck:
             run = True
             while run:
                 for index in range(0, leng):
-                    if card.__lt__(card_list[index]) or card.__eq__(card_list[index]):
+                    if card < card_list[index] or card == card_list[index]:
                         card_list.insert(index, card)
                         run = False
                         break
                     else:
-                        if index == leng -1:
+                        if index == leng - 1:
                             card_list.append(card)
                             run = False
                             break

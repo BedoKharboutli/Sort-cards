@@ -4,54 +4,54 @@ from deck import Deck, Card
 
 
 def test_card_init():
-#Denna test skapar ett kort och kontrollerar om dess strängrepresentation är korrekt
+    # Denna test skapar ett kort och kontrollerar om dess strängrepresentation är korrekt
     card = Card(4, "FirstCard")
     assert(str(card) == "4F")
 
 def test_card_eq():
-#denna test kontrollerar likheten mellan två kort föratt säkerställa att två kort med samma värden anses vara lika.
+    # denna test kontrollerar likheten mellan två kort föratt säkerställa att två kort med samma värden anses vara lika.
     card1 = Card(4,"FirstCard")
     card2 = Card(4,"SecondCard")
-    assert card1.__eq__(card2) == True
+    assert card1 == card2
 
 def test_card_lt():
-#denna test kontrollerar jämförelse för mindre än (__lt__) mellan två kort och att det fungerar korrekt
+    # denna test kontrollerar jämförelse för mindre än (__lt__) mellan två kort och att det fungerar korrekt
     card1 = Card(4, "FirstCard")
     card2 = Card(2, "SecondCard")
-    assert card2.__lt__(card1) == True
+    assert card2 < card1
 
 def test_card_gt():
-#denna test kontrollerar jämförelse för större än (__gt__) mellan två kort och att det fungerar korrekt
+    # denna test kontrollerar jämförelse för större än (__gt__) mellan två kort och att det fungerar korrekt
     card1 = Card(4, "FirstCard")
     card2 = Card(2, "SecondCard")
-    assert card1.__gt__(card2) == True
+    assert card1 > card2
 
 def test_deck_len():
-#denna test testar om längden av kortleken (Deck) är rätt antal kort från början.
+    # denna test testar om längden av kortleken (Deck) är rätt antal kort från början.
     deck = Deck()
     assert deck.__len__() == 52
 
 def test_deck_insert():
-#Testet kontrollerar att infogandet av ett kort i (Deck) fungerar som förväntat. Detta är användbart när du lägger till kort under spelets gång.
+    # Testet kontrollerar att infogandet av ett kort i (Deck) fungerar som förväntat. Detta är användbart när du lägger till kort under spelets gång.
     card_list = [Card(1, "FirstCard"),Card(2,"SecondCard"), Card(2, "FirstCard"), Card(3, "FirstCard"), Card(4,"SecondCard"), Card(4,"ThirdCard"), Card(5, "FouthCard")]
     card = Card(3, "AnotherCard")
     card_list_after_insert = [Card(1, "FirstCard"),Card(2,"SecondCard"), Card(2, "FirstCard"),Card(3, "AnotherCard"), Card(3, "FirstCard"), Card(4,"SecondCard"), Card(4,"ThirdCard"), Card(5, "FouthCard")]
     assert Deck.insert(card_list,card) == card_list_after_insert
 
 def test_deck_take():
-#denna test testar om att ta ett kort från kortleken (Deck) minskar kortlekens antal.
+    # denna test testar om att ta ett kort från kortleken (Deck) minskar kortlekens antal.
     deck = Deck()
     deck.take()
     assert deck.__len__() == 51
 
 def test_deck_put():
-#denna test testar om att lägga till ett kort på kortleken (Deck) ökar kortlekens antal.
+    # denna test testar om att lägga till ett kort på kortleken (Deck) ökar kortlekens antal.
     deck = Deck()
     deck.put(Card(8, "NewCard"))
     assert deck.__len__() == 53
     assert Card(8,"NewCard") in deck.cards
 def test_deck_sort():
-#denna test testar om sorteringsmetoden för kortleken (sort) fungerar som förväntat
+    # denna test testar om sorteringsmetoden för kortleken (sort) fungerar som förväntat
     deck = Deck()
     deck.sort()
     # ['Hearts', 'Diamonds', 'Spades', 'Clubs']
